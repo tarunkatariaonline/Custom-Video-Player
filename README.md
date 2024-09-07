@@ -9,6 +9,7 @@ This is a custom video player built using **React.js** and **Vite**, with additi
 - **Playback Speed Control**: Adjust playback speed up to 3x.
 - **Volume Controller**: Control video volume directly within the player.
 - **Full-Screen Mode**: Enable full-screen mode for immersive video watching.
+- **HLS(HTTP Live Streaming) / m3u8 Support**: Can Play m3u8 file in the player
 - **Subtitle Support**: (In development) Adding subtitles functionality soon.
 
 ## Technologies Used
