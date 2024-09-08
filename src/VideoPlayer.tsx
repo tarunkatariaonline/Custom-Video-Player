@@ -1,10 +1,14 @@
-import { MdOutlinePause, MdSubtitles, MdOutlineVolumeUp, MdOutlineZoomOutMap, MdPlayArrow, MdVolumeMute, MdVolumeOff, MdSubtitlesOff } from "react-icons/md";
+import { MdOutlinePause, MdSubtitles, MdOutlineVolumeUp, MdOutlineZoomOutMap, MdPlayArrow,  MdVolumeOff, MdSubtitlesOff } from "react-icons/md";
 import './VideoPlayer.css'
 import Hls from 'hls.js';
-import mov from './mov.mp4'
+
 
 import { useEffect, useRef, useState } from "react";
-const VideoPlayer = () => {
+
+interface VideoInterface {
+  src:string
+}
+const VideoPlayer = ({src}:VideoInterface) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isFullScreen,setIsFullScreen] = useState(false)
@@ -15,7 +19,8 @@ const VideoPlayer = () => {
   const divRef = useRef<any>(null)
   const [volume,setVolume] = useState(1)
   const [playbackRate, setPlaybackRate] = useState(1);
-  const src = "https://ag.bigtimedelivery.net/_v13/ee250af64cab6cd80766ec8d91273b8e6dfba8e1a0de8c6bb277619add06c09134b8b9a7cc897741d88a6380fdb51c28e050ff01fa23fdfa28ab85e681a06e641547ebf43fd3dda2fbc29039e318bbe8c6b82dc1a5226bda08dbb1be99b13ed5f606910d29cec9ee30aef4bcaf596ef2e149be142e7f346e8eb382851ffb760d4db26de84a40c09ca80a83f9c0529550/360/index.m3u8"
+  console.log(src)
+  // const src = "https://ag.bigtimedelivery.net/_v13/ee250af64cab6cd80766ec8d91273b8e6dfba8e1a0de8c6bb277619add06c09134b8b9a7cc897741d88a6380fdb51c28e050ff01fa23fdfa28ab85e681a06e641547ebf43fd3dda2fbc29039e318bbe8c6b82dc1a5226bda08dbb1be99b13ed5f606910d29cec9ee30aef4bcaf596ef2e149be142e7f346e8eb382851ffb760d4db26de84a40c09ca80a83f9c0529550/360/index.m3u8"
   useEffect(() => {
     if (videoRef.current) {
       const video = videoRef.current;
@@ -42,14 +47,14 @@ const VideoPlayer = () => {
         });
       }
     }
-  }, []);
+  }, [src]);
 
   useEffect(()=>{
    if(videoRef.current){
    
     videoRef.current.currentTime =0
    }
-  },[])
+  },[src])
 
 
 
